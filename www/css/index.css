@@ -1,0 +1,11 @@
+html *{
+  font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+}
+
+.centered {
+  text-align: center;
+}
+
+.not-bold {
+  font-weight: normal !important;
+}

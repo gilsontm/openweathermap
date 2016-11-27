@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+      <link rel="stylesheet" type="text/css" href="css/normalize.css"/>
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+      <link rel="stylesheet" type="text/css" href="css/bootstrap-grid.css"/>
+      <link rel="stylesheet" type="text/css" href="css/bootstrap-flex.css"/>
+      <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css"/>
+      <link rel="stylesheet" type="text/css" href="css/index.css"/>
+      
+      <title> Weather Forecast </title>
+    </head>
+    <body class="p-0">
+      <div data-role="page">
+        <div class="container-fluid bg-info mb-2 p-1 pt-2 w-100">
+          <h2 class="text-white centered">
+            Weather Forecast
+          </h2>
+        </div>
+
+        <div class="container p-0 my-1 mx-0 w-100">
+          <div class="form-group row mx-0 p-0">
+            <input data-role="none" class="form-control col-xs-6 offset-xs-2 w-100" type="text" id="search-input" placeholder="Search a city...">
+            <button data-role="none" class="btn btn-info col-xs-2 w-100" id="search-btn"> Go! </button>
+          </div>
+          <div class="row w-100 mx-0 p-0">
+            <a data-role="none" href="#left-panel" class="btn btn-info px-1 col-xs-8 offset-xs-2 text-white not-bold"> Favorite cities </a>
+          </div>
+          <div class="mx-2 my-1 mt-2" id="alert-wrapper"> </div>
+        </div>
+
+        <div class="collapse" id="body-collapse">
+          <div class="container">
+            <div class="card" id="current-weather-card">
+              <div class="card-header centered bg-info">
+                <h4 class="text-white m-0" id="current-weather-card-title"> </h4>
+              </div>
+              <div class="card-block">
+                <ul class="list-group list-group-flush" id="current-weather-list">
+                  <li class="list-group-item description"></li>
+                  <li class="list-group-item min"></li>
+                  <li class="list-group-item max"></li>
+                  <li class="list-group-item humidity"></li>
+                  <div class="row w-100 p-0 mt-1 mx-0">
+                    <button data-role="none" class="btn btn-info col-xs-5" id="forecast-btn"> Forecast </button>
+                    <button data-role="none" class="btn btn-info col-xs-5 offset-xs-2" id="add-favorite-btn"> Add favorite </button>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="forecast-modal" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header bg-info centered">
+                <h3 class="modal-title text-white">
+                  Forecast
+                  <button data-role="none" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </h3>
+              </div>
+              <div class="modal-body">
+
+                <div class="card day-1 mb-1">
+                  <div class="card-header centered bg-info">
+                    <h5 class="title-date text-white m-0"> </h5>
+                  </div>
+                  <div class="card-block">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item description"> </li>
+                      <li class="list-group-item min"> </li>
+                      <li class="list-group-item max"> </li>
+                      <li class="list-group-item humidity"> </li>
+                  </div>
+                </div>
+
+                <div class="card day-2 mb-1">
+                  <div class="card-header centered bg-info">
+                    <h5 class="title-date text-white m-0"> </h5>
+                  </div>
+                  <div class="card-block">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item description"> </li>
+                      <li class="list-group-item min"> </li>
+                      <li class="list-group-item max"> </li>
+                      <li class="list-group-item humidity"> </li>
+                  </div>
+                </div>
+
+                <div class="card day-3 mb-1">
+                  <div class="card-header centered bg-info">
+                    <h5 class="title-date text-white m-0"> </h5>
+                  </div>
+                  <div class="card-block">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item description"> </li>
+                      <li class="list-group-item min"> </li>
+                      <li class="list-group-item max"> </li>
+                      <li class="list-group-item humidity"> </li>
+                  </div>
+                </div>
+
+                <div class="card day-4 mb-1">
+                  <div class="card-header centered bg-info">
+                    <h5 class="title-date text-white m-0"> </h5>
+                  </div>
+                  <div class="card-block">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item description"> </li>
+                      <li class="list-group-item min"> </li>
+                      <li class="list-group-item max"> </li>
+                      <li class="list-group-item humidity"> </li>
+                  </div>
+                </div>
+
+                <div class="card day-5 mb-1">
+                  <div class="card-header centered bg-info">
+                    <h5 class="title-date text-white m-0"> </h5>
+                  </div>
+                  <div class="card-block">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item description"> </li>
+                      <li class="list-group-item min"> </li>
+                      <li class="list-group-item max"> </li>
+                      <li class="list-group-item humidity"> </li>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div data-role="panel" id="left-panel" data-display="overlay" data-position="left" data-theme="a">
+          <div class="container-fluid bg-info mb-2 px-2 py-1 rounded">
+            <h4 class="text-white centered"> Favorite cities </h4>
+          </div>
+          <div class="list-group" id="favorite-cities-list"> </div>
+          <button data-role="none" class="btn btn-info btn-block mt-2" id="clear-list-btn"> Clear list </button>
+        </div>
+      </div>
+
+      <script type="text/javascript" src="cordova.js"></script>
+      <script type="text/javascript" src="js/jquery-2.2.4.js"></script>
+      <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+      <script type="text/javascript" src="js/lokijs.min.js"></script>
+      <script type="text/javascript" src="js/tether.min.js"></script>
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
